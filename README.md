@@ -6,3 +6,5 @@ To run the application, run:
 ```bash
 rail s
 ```
+
+Public application: https://obscure-spire-76764.herokuapp.com/
