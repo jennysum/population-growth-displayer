@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      <h4>Population Growth Info</h4>
+      <dl>
+        <dt>Zipcode</dt>
+        <dd><%= @population_growth['zipcode'] %></dd>
+        <dt>Cbsa</dt>
+        <dd><%= @population_growth['cbsa'] %></dd>
+        <dt>Name</dt>
+        <dd><%= @population_growth['msaName'] %></dd>
+        <dt>Population 2014</dt>
+        <dd><%= @population_growth['population']['forYear2014'] %></dd>
+        <dt>Population 2015</dt>
+        <dd><%= @population_growth['population']['forYear2015'] %></dd>
+      </dl>
+    </div>
+  </div>
+</div>
