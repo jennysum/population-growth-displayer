@@ -3,29 +3,17 @@ class PopulationGrowthController < ApplicationController
     end
 
     def search
-        population_growths = find_population_growth(params[:zipcode])
+        zipcode = params[:zipcode]
 
-        unless population_growths
+        response = HTTParty.get("https://secret-sands-06474.herokuapp.com/v1/zipcode/60660/populationGrowth")
+
+        @population_growth = response
+
+        puts @population_growth
+
+        unless @population_growth
             flash[:alert] = 'Population growth information not found'
             return render action: :index
         end
-    end
-
-    private
-
-    def request_api(url)
-        response = Excon.get(
-          url,
-          headers: {
-            'X-RapidAPI-Host' => URI.parse(url).host,
-            'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
-          }
-        )
-        return nil if response.status != 200
-        JSON.parse(response.body)
-    end
-
-    def find_population_growth(zipcode)
-        request_api("https://secret-sands-06474.herokuapp.com/v1/zipcode/{zipcode}/populationGrowth")
     end
 end
